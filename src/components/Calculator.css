@@ -1,0 +1,66 @@
+.wrapper {
+    background-color: whitesmoke;
+    border-radius: 1em;
+    padding: 1em;
+    margin: 1em auto;
+    width: 100%;
+    max-width: 20em;
+    padding-top: 5em;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: .5em;
+    box-shadow: #8C7E7D 0px 0px 10px;
+}
+
+.display {
+    grid-column: span 4;
+    background-color: whitesmoke;
+    border-radius: 1em;
+    padding: .5em;  
+    text-align: right;
+    font-size: 3em;
+    color: #0F2450;
+
+}
+
+button {
+    width: 3em;
+    height: 3em;
+    font-size: 1.5em;
+    border: none;
+    border-radius: 2em;
+    gap: 0.5em;
+    background-color: #E4D7C7;
+}
+
+.equals-button {
+  grid-column: span 2;
+  width: 100%;
+}
+
+button:hover {
+    background-color: #8C7E7D;
+    color: white;
+    cursor: pointer;
+}
+
+.blue {
+    background-color: #0F2450;
+    color: white;
+}
+
+.blue:hover {
+    background-color: black;
+    color: white;
+}
+
+.sand {
+    background-color: #F0AE95;
+}
+
+.sand:hover {
+    background-color: black;
+    color: white;
+}
+
+
