@@ -1,7 +1,5 @@
 # Calculadora React – Capacita Brasil
 
-![Calculadora](public/calculator.png)
-
 ## Sobre o Projeto
 
 Esta é uma calculadora web desenvolvida em React especialmente para a oficina do módulo intermediário do Capacita Brasil. O objetivo é demonstrar conceitos de React, boas práticas de UX, acessibilidade e documentação, além de servir como base para estudos e customizações futuras.
@@ -26,7 +24,7 @@ Esta é uma calculadora web desenvolvida em React especialmente para a oficina d
 
 ## Demonstração
 
-![Demonstração da calculadora](public/calculator.png)
+![Demonstração da calculadora](public/calc.png)
 
 ## Como usar
 
