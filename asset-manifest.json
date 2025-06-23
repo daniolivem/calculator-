@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/calculator-react-capacita/static/css/main.57ba4f65.css",
+    "main.js": "/calculator-react-capacita/static/js/main.143b6be6.js",
+    "static/js/453.57d26121.chunk.js": "/calculator-react-capacita/static/js/453.57d26121.chunk.js",
+    "index.html": "/calculator-react-capacita/index.html",
+    "main.57ba4f65.css.map": "/calculator-react-capacita/static/css/main.57ba4f65.css.map",
+    "main.143b6be6.js.map": "/calculator-react-capacita/static/js/main.143b6be6.js.map",
+    "453.57d26121.chunk.js.map": "/calculator-react-capacita/static/js/453.57d26121.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.57ba4f65.css",
+    "static/js/main.143b6be6.js"
+  ]
+}
