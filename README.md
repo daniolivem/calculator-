@@ -22,8 +22,7 @@ Este projeto é uma calculadora web desenvolvida em React como parte do módulo 
 - **Acessibilidade:**
   - Todos os botões e o visor possuem `aria-label` para leitores de tela.
 - **UX aprimorada:**
-  - Botão "0" com largura maior para facilitar o uso.
-  - Botão de igual destacado para melhor visibilidade.
+  - Botão "=" com largura maior para facilitar o uso e destacado para melhor visibilidade.
 - **Código comentado:**
   - Comentários detalhados no código para facilitar o aprendizado, a manutenção e a personalização.
 
