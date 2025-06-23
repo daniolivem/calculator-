@@ -1,70 +1,97 @@
-# Getting Started with Create React App
+# Calculadora React – Capacita Brasil
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Calculadora](public/calculator.png)
 
-## Available Scripts
+## Sobre o Projeto
 
-In the project directory, you can run:
+Esta é uma calculadora web desenvolvida em React especialmente para a oficina do Capacita Brasil. O objetivo é demonstrar conceitos de React, boas práticas de UX, acessibilidade e documentação, além de servir como base para estudos e customizações futuras.
 
-### `npm start`
+## Funcionalidades
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Operações básicas:** Soma, subtração, multiplicação e divisão.
+- **Operação contínua:** Permite realizar cálculos sequenciais sem precisar pressionar igual a cada etapa.
+- **Controle de entrada:**
+  - Limite de 10 dígitos no visor.
+  - Impede múltiplas vírgulas e zeros à esquerda.
+  - Início correto de números decimais.
+- **Tratamento de erros:**
+  - Divisão por zero exibe mensagem de erro e alerta.
+- **Acessibilidade:**
+  - Todos os botões e visor possuem `aria-label` para leitores de tela.
+- **UX aprimorada:**
+  - Botão "0" mais largo, botão de igual destacado.
+  - Rodapé personalizado com links do desenvolvedor.
+- **Código comentado:**
+  - Explicações detalhadas para facilitar o entendimento e a replicação.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Demonstração
 
-### `npm test`
+![Demonstração da calculadora](public/calculator.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Como usar
 
-### `npm run build`
+### 1. Pré-requisitos
+- Node.js (v14 ou superior)
+- npm ou yarn
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 2. Instalação
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Clone o repositório e instale as dependências:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+git clone https://github.com/daniolivem/calculator-react-capacita.git
+cd calculator-react-capacita
+npm install
+```
 
-### `npm run eject`
+### 3. Execução
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Acesse [http://localhost:3000](http://localhost:3000) no navegador.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Estrutura do Projeto
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+public/
+  calculator.png
+  ...
+src/
+  components/
+    Calculator.jsx
+    Calculator.css
+  App.js
+  ...
+README.md
+```
 
-## Learn More
+## Tecnologias Utilizadas
+- [React](https://reactjs.org/)
+- [Material UI](https://mui.com/) (apenas Container)
+- CSS Grid e Flexbox
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Acessibilidade
+- Todos os botões e visor possuem `aria-label`.
+- Contraste adequado e navegação por teclado.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Personalização
+- O código está amplamente comentado para facilitar adaptações.
+- Para alterar estilos, edite `src/components/Calculator.css`.
+- Para modificar a lógica, edite `src/components/Calculator.jsx`.
 
-### Code Splitting
+## Créditos
+Desenvolvido por [Daniely Mélo](https://www.linkedin.com/in/daniiom)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- [LinkedIn](https://www.linkedin.com/in/daniiom)
+- [GitHub](https://github.com/daniolivem)
 
-### Analyzing the Bundle Size
+Projeto criado para a oficina Capacita Brasil.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Licença
+Este projeto está sob a licença MIT. Sinta-se à vontade para usar, estudar e modificar!
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+> Dúvidas, sugestões ou feedback? Entre em contato pelo LinkedIn ou abra uma issue no GitHub.

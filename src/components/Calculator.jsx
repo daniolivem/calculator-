@@ -10,12 +10,43 @@ function Calculator() {
   const [oldNum, setOldNum] = useState("0");
   // Guarda o operador selecionado (+, -, *, /)
   const [operator, setOperator] = useState("");
+  // Estado para controlar se o próximo input deve substituir o visor
+  const [waitingForNewNum, setWaitingForNewNum] = useState(false);
 
-  // Função chamada ao clicar em um operador. Salva o número atual e o operador, e zera o visor para o próximo número
+  // Função chamada ao clicar em um operador. Resolve a operação anterior (se houver) e prepara para a próxima
   function handleOperator(op) {
-    setOldNum(num);
-    setOperator(op);
-    setNum("0");
+    if (operator !== "") {
+      // Salva o resultado da operação anterior antes de definir o novo operador
+      const current = Number(num.replace(",", "."));
+      const previous = Number(oldNum.replace(",", "."));
+      let result;
+      switch (operator) {
+        case "+":
+          result = previous + current;
+          break;
+        case "-":
+          result = previous - current;
+          break;
+        case "*":
+          result = previous * current;
+          break;
+        case "/":
+          result = previous / current;
+          break;
+        default:
+          result = current;
+      }
+      const resultStr = String(result).replace(".", ",");
+      setNum(resultStr);
+      setOldNum(resultStr);
+      setOperator(op);
+      setWaitingForNewNum(true); // Próximo input deve substituir o visor
+    } else {
+      setOldNum(num);
+      setOperator(op);
+      setWaitingForNewNum(true); // Próximo input deve substituir o visor
+      setNum("0");
+    }
   }
 
   // Função chamada ao clicar em um número ou vírgula
@@ -30,6 +61,13 @@ function Calculator() {
     // Se o visor for 0 e o input for vírgula, começa com "0,"
     if (num === "0" && input === ",") {
       setNum("0,");
+      setWaitingForNewNum(false);
+      return;
+    }
+    // Se deve substituir o visor, começa novo número
+    if (waitingForNewNum) {
+      setNum(input);
+      setWaitingForNewNum(false);
       return;
     }
     // Se o visor for 0, substitui pelo input
@@ -46,6 +84,7 @@ function Calculator() {
     setNum("0");
     setOldNum("0");
     setOperator("");
+    setWaitingForNewNum(false);
   }
 
   // Realiza o cálculo ao pressionar o igual, converte vírgula para ponto para cálculo, exibe resultado com vírgula
@@ -64,6 +103,14 @@ function Calculator() {
         result = previous * current;
         break;
       case "/":
+        if (current === 0) {
+          alert("Não é possível dividir por zero!");
+          setNum("Erro");
+          setOperator("");
+          setOldNum("0");
+          setWaitingForNewNum(true);
+          return;
+        }
         result = previous / current;
         break;
       default:
@@ -91,63 +138,63 @@ function Calculator() {
       <Container maxWidth="sm">
         <div className="wrapper">
           <div className="display">
-            <span className="display-text">{num}</span>{" "}
+            <span className="display-text" aria-label="Visor da calculadora">{num}</span>{" "}
           </div>
-          <button className="sand" onClick={clear}>
+          <button className="sand" onClick={clear} aria-label="Limpar visor">
             C
           </button>
-          <button className="sand" onClick={operatorChange}>
+          <button className="sand" onClick={operatorChange} aria-label="Inverter sinal">
             +/-
           </button>
-          <button className="sand" onClick={porcentage}>
+          <button className="sand" onClick={porcentage} aria-label="Porcentagem">
             %
           </button>
-          <button className="blue" onClick={() => handleOperator("/")}>
+          <button className="blue" onClick={() => handleOperator("/")} aria-label="Divisão">
             /
           </button>
-          <button className="button" onClick={inputNum} value="7">
+          <button className="button" onClick={inputNum} value="7" aria-label="7">
             7
           </button>
-          <button className="button" onClick={inputNum} value="8">
+          <button className="button" onClick={inputNum} value="8" aria-label="8">
             8
           </button>
-          <button className="button" onClick={inputNum} value="9">
+          <button className="button" onClick={inputNum} value="9" aria-label="9">
             9
           </button>
-          <button className="blue" onClick={() => handleOperator("*")}>
+          <button className="blue" onClick={() => handleOperator("*")} aria-label="Multiplicação">
             *
           </button>
-          <button className="button" onClick={inputNum} value="4">
+          <button className="button" onClick={inputNum} value="4" aria-label="4">
             4
           </button>
-          <button className="button" onClick={inputNum} value="5">
+          <button className="button" onClick={inputNum} value="5" aria-label="5">
             5
           </button>
-          <button className="button" onClick={inputNum} value="6">
+          <button className="button" onClick={inputNum} value="6" aria-label="6">
             6
           </button>
-          <button className="blue" onClick={() => handleOperator("-")}>
+          <button className="blue" onClick={() => handleOperator("-")} aria-label="Subtração">
             -
           </button>
-          <button className="button" onClick={inputNum} value="1">
+          <button className="button" onClick={inputNum} value="1" aria-label="1">
             1
           </button>
-          <button className="button" onClick={inputNum} value="2">
+          <button className="button" onClick={inputNum} value="2" aria-label="2">
             2
           </button>
-          <button className="button" onClick={inputNum} value="3">
+          <button className="button" onClick={inputNum} value="3" aria-label="3">
             3
           </button>
-          <button className="blue" onClick={() => handleOperator("+")}>
+          <button className="blue" onClick={() => handleOperator("+")} aria-label="Soma">
             +
           </button>
-          <button className="button zero-button" onClick={inputNum} value="0">
+          <button className="button zero-button" onClick={inputNum} value="0" aria-label="0">
             0
           </button>
-          <button className="button" onClick={inputNum} value=",">
+          <button className="button" onClick={inputNum} value="," aria-label="Vírgula">
             ,
           </button>
-          <button className="blue equals-button" onClick={equals}>
+          <button className="blue equals-button" onClick={equals} aria-label="Igual">
             =
           </button>
         </div>
