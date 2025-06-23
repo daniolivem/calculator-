@@ -1,5 +1,5 @@
-// Código comentado para não futuro eu lembre o que fiz e como fiz
-import React, { useState } from "react";
+// Código comentado para no futuro eu lembrar o que fiz e como fiz
+import React, { useState, useEffect } from "react";
 import "./Calculator.css";
 import Container from "@mui/material/Container";
 
@@ -31,6 +31,14 @@ function Calculator() {
           result = previous * current;
           break;
         case "/":
+          if (current === 0) {
+            alert("Não é possível dividir por zero!");
+            setNum("Erro");
+            setOperator("");
+            setOldNum("0");
+            setWaitingForNewNum(true);
+            return;
+          }
           result = previous / current;
           break;
         default:
@@ -133,6 +141,42 @@ function Calculator() {
     setNum(String(valor / 100).replace(".", ","));
   }
 
+  // Adiciona suporte ao teclado físico
+  useEffect(() => {
+    function handleKeyDown(event) {
+      const key = event.key;
+
+      // Mapeia teclas para as funções da calculadora
+      if (!isNaN(key)) {
+        // Números (0-9)
+        inputNum({ target: { value: key } });
+      } else if (key === "+" || key === "-" || key === "*" || key === "/") {
+        handleOperator(key);
+      } else if (key === "Enter" || key === "=") {
+        equals();
+      } else if (key === "Backspace") {
+        // Apaga o último dígito
+        setNum((prev) => (prev.length > 1 ? prev.slice(0, -1) : "0"));
+      } else if (key === "Escape" || key.toLowerCase() === "c") {
+        // Limpa tudo
+        clear();
+      } else if (key === ",") {
+        // Adiciona vírgula decimal
+        if (!num.includes(",")) {
+          inputNum({ target: { value: "," } });
+        }
+      }
+    }
+
+    // Adiciona o evento de teclado
+    window.addEventListener("keydown", handleKeyDown);
+
+    // Remove o evento ao desmontar o componente
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [num, oldNum, operator, waitingForNewNum]);
+
   return (
     <>
       <Container maxWidth="sm">
@@ -200,9 +244,14 @@ function Calculator() {
         </div>
       </Container>
       <footer className="footer-calc">
-        Desenvolvido por Daniely Mélo <a href="https://www.linkedin.com/in/daniiom" target="_blank" rel="noopener noreferrer">LinkeIn</a> 
+        Desenvolvido por Daniely Mélo{" "}
+        <a href="https://www.linkedin.com/in/daniiom" target="_blank" rel="noopener noreferrer">
+          LinkedIn
+        </a>{" "}
         /
-        <a href="https://github.com/daniolivem" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://github.com/daniolivem" target="_blank" rel="noopener noreferrer">
+          GitHub
+        </a>
       </footer>
     </>
   );
