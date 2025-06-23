@@ -20,6 +20,7 @@
     text-align: right;
     font-size: 3em;
     color: #0F2450;
+    
 
 }
 
@@ -63,4 +64,9 @@ button:hover {
     color: white;
 }
 
-
+.footer-calc {
+  margin-top: 1em;
+  text-align: center;
+  color: #888;
+  font-size: .9em;
+}
