@@ -53,7 +53,7 @@ function Calculator() {
       setOldNum(num);
       setOperator(op);
       setWaitingForNewNum(true); // Próximo input deve substituir o visor
-      setNum("0");
+      //setNum("0");
     }
   }
 
