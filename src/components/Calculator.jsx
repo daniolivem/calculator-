@@ -136,10 +136,22 @@ function Calculator() {
   }
 
   // Calcula a porcentagem do número atual
-  function porcentage() {
-    const valor = Number(num.replace(",", "."));
-    setNum(String(valor / 100).replace(".", ","));
-  }
+  function calculateRelativePercentage() {
+  const toNumber = (str) => Number(str.replace(",", "."));
+  const toString = (num) => String(num).replace(".", ",");
+
+  const currentValue = toNumber(num);
+  const previousValue = toNumber(oldNum);
+
+  const isBinaryOperation = operator && oldNum !== "0";
+
+  const percentValue = isBinaryOperation
+    ? (previousValue * currentValue) / 100
+    : currentValue / 100;
+
+  setNum(toString(percentValue));
+  setWaitingForNewNum(false);
+}
 
   // Adiciona suporte ao teclado físico
   useEffect(() => {
