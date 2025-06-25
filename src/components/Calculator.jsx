@@ -145,11 +145,46 @@ function Calculator() {
 
   const isBinaryOperation = operator && oldNum !== "0";
 
-  const percentValue = isBinaryOperation
-    ? (previousValue * currentValue) / 100
-    : currentValue / 100;
+  if (isBinaryOperation) {
+    // Aplica a porcentagem relativa ao valor anterior
+    const percentValue = (previousValue * currentValue) / 100;
 
-  setNum(toString(percentValue));
+    // Resolve a operação binária com o valor percentual
+    let result;
+    switch (operator) {
+      case "+":
+        result = previousValue + percentValue;
+        break;
+      case "-":
+        result = previousValue - percentValue;
+        break;
+      case "*":
+        result = previousValue * percentValue;
+        break;
+      case "/":
+        if (percentValue === 0) {
+          alert("Não é possível dividir por zero!");
+          setNum("Erro");
+          setOperator("");
+          setOldNum("0");
+          setWaitingForNewNum(true);
+          return;
+        }
+        result = previousValue / percentValue;
+        break;
+      default:
+        result = percentValue;
+    }
+
+    setNum(toString(result));
+    setOldNum(toString(result));
+    setOperator(""); // Zera o operador após a operação
+  } else {
+    // Caso seja apenas número único (sem operador)
+    const percentValue = currentValue / 100;
+    setNum(toString(percentValue));
+  }
+
   setWaitingForNewNum(false);
 }
 
