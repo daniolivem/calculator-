@@ -1,5 +1,5 @@
 
-# Calculadora React – Capacita Brasil.
+# Calculadora React – Módulo Intermediário - Residência em TIC
 
 ## Sobre o Projeto
 
