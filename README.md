@@ -1,5 +1,5 @@
 
-# Calculadora React – Capacita Brasil
+# Calculadora React – Capacita Brasil.
 
 ## Sobre o Projeto
 
